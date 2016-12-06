@@ -1,6 +1,6 @@
 {
-    "forma_de_pagamento": "pagamento em dolar",
-    "valor": "9.70",
-    "moeda": "USD",
-    "descricao": "pagamento em verdinhas"
+    "forma_de_pagamento": "cartao",
+    "valor": "4200",
+    "moeda": "BRL",
+    "descricao": "internet"
 }
