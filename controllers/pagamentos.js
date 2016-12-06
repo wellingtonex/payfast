@@ -33,9 +33,23 @@ module.exports = (app) => {
                 res.status(500).send(error);
                 console.log(error);
             } else {
+                
+                let response = {
+                    dados_do_pagamento: pagamento,
+                    links: [{
+                        href:'http://localhost:3000/pagamentos/pagamento/' +  result.insertId,
+                        rel:'confirmar',
+                        method:'PUT'
+                    },{
+                        href:'http://localhost:3000/pagamentos/pagamento/' +  result.insertId,
+                        rel:'cancelar',
+                        method:'DELETE'
+                    }]
+                }
+
                 console.log('pagamento criado: ' + result);
                 res.location('/pagamentos/pagamento/' + result.insertId);
-                res.status(201).json(pagamento);
+                res.status(201).json(response);
             }
         });
     });
