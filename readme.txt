@@ -1,8 +1,8 @@
-npm install --save express
-npm install --save consign
-npm install --save body-parser
-npm install --save mysql
-npm install --save express-validator
+npm install express --save
+npm install consign --save
+npm install body-parser --save
+npm install mysql --save
+npm install express-validator --save
 
 
 curl http://localhost:3000/pagamentos/pagamento -X POST -v -H "Content-type: application/json" -d @files/pagamento.json | json_pp
@@ -18,3 +18,11 @@ CREATE TABLE `pagamentos` (
   `descricao` text,
    PRIMARY KEY (id)
   );
+
+100 Continue: o servidor recebeu a solicitação e o cliente pode continuar a comunicação.
+200 Ok: tudo ocorreu como esperado.
+201 Created: um novo recurso foi criado no servidor.
+301 Moved: a url solicitada foi movida.
+400 Bad Request: problemas na requisição do cliente.
+404 Not Found: a url solicitada não foi encontrada.
+500 Internal Server Error: algo inesperado aconteceu do lado do servidor
