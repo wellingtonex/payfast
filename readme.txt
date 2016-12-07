@@ -3,6 +3,7 @@ npm install consign --save
 npm install body-parser --save
 npm install mysql --save
 npm install express-validator --save
+npm install restify --save
 
 
 curl http://localhost:3000/pagamentos/pagamento -X POST -v -H "Content-type: application/json" -d @files/pagamento.json | json_pp
