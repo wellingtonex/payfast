@@ -4,7 +4,9 @@ npm install body-parser --save
 npm install mysql --save
 npm install express-validator --save
 npm install restify --save
- npm install soap --save
+npm install soap --save
+npm install memcached --save
+
 
 
 curl -X POST http://localhost:3000/upload/imagem  --data-binary @carol.jpg -H "Content-Type: application/octet-stream" -v -H "filename: carol.jpg"
@@ -30,3 +32,6 @@ CREATE TABLE `pagamentos` (
 400 Bad Request: problemas na requisição do cliente.
 404 Not Found: a url solicitada não foi encontrada.
 500 Internal Server Error: algo inesperado aconteceu do lado do servidor
+
+
+https://www.howtoinstall.co/pt/ubuntu/xenial/memcached

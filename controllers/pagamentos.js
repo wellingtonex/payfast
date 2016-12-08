@@ -117,16 +117,32 @@ module.exports = (app) => {
         let id = req.params.id;
         console.log('consultando pagamento: ' + id);
         
+        let memcachedClient = app.servicos.memcachedClient();
 
-        let connection = app.persistencia.connectionFactory();
-        let pagamentoDao = new app.persistencia.PagamentoDao(connection);
+        memcachedClient.get('pagamento-' + id, (error, result) => {
+            if(error | !result) {
+                console.log('MISS - Chave não encontrada.');
 
-        pagamentoDao.buscaPorId(id, (error, result) => {
-            if(error) {
-                res.status(500).send(error);
+                let connection = app.persistencia.connectionFactory();
+                let pagamentoDao = new app.persistencia.PagamentoDao(connection);
+
+                pagamentoDao.buscaPorId(id, (error, result) => {
+                    if(error) {
+                        res.status(500).send(error);
+                    } else {
+                        memcachedClient.set('pagamento-' + id, result, 60000, (error) => {
+                            console.log('Nova chave adicionada ao cache: pagamento-' + id );    
+                        }); 
+                        res.json(result);
+                    }
+                });
+
             } else {
-                res.json(result);
+                console.log('HIT - valor: ' + JSON.stringify(result));
+                res.json(result);        
             }
         });
+
+        
     });
 }
