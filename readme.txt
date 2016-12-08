@@ -7,6 +7,7 @@ npm install restify --save
 npm install soap --save
 npm install memcached --save
 npm install winston --save
+npm install morgan --save
 
 
 curl -X POST http://localhost:3000/upload/imagem  --data-binary @carol.jpg -H "Content-Type: application/octet-stream" -v -H "filename: carol.jpg"
