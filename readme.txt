@@ -6,7 +6,7 @@ npm install express-validator --save
 npm install restify --save
 npm install soap --save
 npm install memcached --save
-
+npm install winston --save
 
 
 curl -X POST http://localhost:3000/upload/imagem  --data-binary @carol.jpg -H "Content-Type: application/octet-stream" -v -H "filename: carol.jpg"
