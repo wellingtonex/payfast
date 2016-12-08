@@ -112,4 +112,21 @@ module.exports = (app) => {
         });
 
     });
+
+    app.get('/pagamentos/pagamento/:id', (req, res) => {
+        let id = req.params.id;
+        console.log('consultando pagamento: ' + id);
+        
+
+        let connection = app.persistencia.connectionFactory();
+        let pagamentoDao = new app.persistencia.PagamentoDao(connection);
+
+        pagamentoDao.buscaPorId(id, (error, result) => {
+            if(error) {
+                res.status(500).send(error);
+            } else {
+                res.json(result);
+            }
+        });
+    });
 }
